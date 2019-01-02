@@ -39,6 +39,7 @@ const getZero = (name) => {
   return count
 }
 exports.countZero = function(req,res){
+  try {
     let reqName = req.body.yourName
     let names = reqName.split(' ')
 
@@ -48,5 +49,11 @@ exports.countZero = function(req,res){
     res.json({
       "total":getZero(reqName)
     })
+  } catch(e) {
+    res.json({
+      "error":"something is wrong"
+    })
+
+  }
 
 };
